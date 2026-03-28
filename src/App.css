@@ -1,0 +1,38 @@
+.app {
+  text-align: center;
+  font-family: Arial;
+  background: #1e1e2f;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 80px;
+  height: 80px;
+  background: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card.flipped {
+  background: #00b894;
+}
