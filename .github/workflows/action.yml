@@ -23,7 +23,7 @@ jobs:
                 path: dist/
     deploy:
         needs: build
-        uses: ./.github/workflows/action.yml
+        uses: ./.github/workflows/reusable.yml
         with:
           publish-dir: dist/
           production-branch: master
