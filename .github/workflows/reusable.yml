@@ -1,0 +1,33 @@
+name: Deploy reusable workflow
+description: Reusable workflow for deploying code to Netlify
+
+on:
+  workflow_call:
+    inputs:
+      publish-dir:
+        required: true
+        type: string
+      production-branch:
+        required: true
+        type: string
+   
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: ${{ inputs.publish-dir }}
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3
+        with:
+          publish-dir: ${{ inputs.publish-dir }}
+          production-branch: ${{ inputs.production-branch }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
